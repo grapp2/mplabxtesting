@@ -1,0 +1,1323 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Wed Aug 09 09:47:27 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	16F18877
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+     7                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+     8                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+     9                           	dabs	1,0x7E,2
+    10     0000                     
+    11                           ; Generated 13/02/2023 GMT
+    12                           ; 
+    13                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    14                           ; All rights reserved.
+    15                           ; 
+    16                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    17                           ; 
+    18                           ; Redistribution and use in source and binary forms, with or without modification, are
+    19                           ; permitted provided that the following conditions are met:
+    20                           ; 
+    21                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    22                           ;        conditions and the following disclaimer.
+    23                           ; 
+    24                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    25                           ;        of conditions and the following disclaimer in the documentation and/or other
+    26                           ;        materials provided with the distribution. Publication is not required when
+    27                           ;        this file is used in an embedded application.
+    28                           ; 
+    29                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    30                           ;        software without specific prior written permission.
+    31                           ; 
+    32                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    33                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    34                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    35                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    36                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    37                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    38                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    39                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    40                           ; 
+    41                           ; 
+    42                           ; Code-generator required, PIC16F18877 Definitions
+    43                           ; 
+    44                           ; SFR Addresses
+    45     0000                     	;# 
+    46     0001                     	;# 
+    47     0002                     	;# 
+    48     0003                     	;# 
+    49     0004                     	;# 
+    50     0005                     	;# 
+    51     0006                     	;# 
+    52     0007                     	;# 
+    53     0008                     	;# 
+    54     0009                     	;# 
+    55     000A                     	;# 
+    56     000B                     	;# 
+    57     000C                     	;# 
+    58     000D                     	;# 
+    59     000E                     	;# 
+    60     000F                     	;# 
+    61     0010                     	;# 
+    62     0011                     	;# 
+    63     0012                     	;# 
+    64     0013                     	;# 
+    65     0014                     	;# 
+    66     0015                     	;# 
+    67     0016                     	;# 
+    68     0017                     	;# 
+    69     0018                     	;# 
+    70     0019                     	;# 
+    71     001A                     	;# 
+    72     001C                     	;# 
+    73     001C                     	;# 
+    74     001D                     	;# 
+    75     001D                     	;# 
+    76     001E                     	;# 
+    77     001F                     	;# 
+    78     008C                     	;# 
+    79     008C                     	;# 
+    80     008D                     	;# 
+    81     008E                     	;# 
+    82     008E                     	;# 
+    83     008F                     	;# 
+    84     0090                     	;# 
+    85     0090                     	;# 
+    86     0091                     	;# 
+    87     0093                     	;# 
+    88     0094                     	;# 
+    89     0095                     	;# 
+    90     0096                     	;# 
+    91     0097                     	;# 
+    92     0098                     	;# 
+    93     0099                     	;# 
+    94     009A                     	;# 
+    95     009B                     	;# 
+    96     009C                     	;# 
+    97     009D                     	;# 
+    98     009E                     	;# 
+    99     010C                     	;# 
+   100     010D                     	;# 
+   101     010E                     	;# 
+   102     010E                     	;# 
+   103     010F                     	;# 
+   104     0110                     	;# 
+   105     0110                     	;# 
+   106     0111                     	;# 
+   107     0112                     	;# 
+   108     0112                     	;# 
+   109     0113                     	;# 
+   110     0114                     	;# 
+   111     0114                     	;# 
+   112     0115                     	;# 
+   113     0116                     	;# 
+   114     0116                     	;# 
+   115     0117                     	;# 
+   116     0119                     	;# 
+   117     0119                     	;# 
+   118     0119                     	;# 
+   119     011A                     	;# 
+   120     011A                     	;# 
+   121     011A                     	;# 
+   122     011B                     	;# 
+   123     011B                     	;# 
+   124     011B                     	;# 
+   125     011B                     	;# 
+   126     011B                     	;# 
+   127     011C                     	;# 
+   128     011C                     	;# 
+   129     011C                     	;# 
+   130     011D                     	;# 
+   131     011D                     	;# 
+   132     011D                     	;# 
+   133     011E                     	;# 
+   134     011E                     	;# 
+   135     011E                     	;# 
+   136     011F                     	;# 
+   137     011F                     	;# 
+   138     011F                     	;# 
+   139     011F                     	;# 
+   140     011F                     	;# 
+   141     018C                     	;# 
+   142     018D                     	;# 
+   143     018E                     	;# 
+   144     018F                     	;# 
+   145     0190                     	;# 
+   146     0191                     	;# 
+   147     0192                     	;# 
+   148     0196                     	;# 
+   149     0197                     	;# 
+   150     0198                     	;# 
+   151     0199                     	;# 
+   152     019A                     	;# 
+   153     019B                     	;# 
+   154     019C                     	;# 
+   155     020C                     	;# 
+   156     020C                     	;# 
+   157     020D                     	;# 
+   158     020E                     	;# 
+   159     020F                     	;# 
+   160     020F                     	;# 
+   161     0210                     	;# 
+   162     0210                     	;# 
+   163     0211                     	;# 
+   164     0211                     	;# 
+   165     0212                     	;# 
+   166     0212                     	;# 
+   167     0213                     	;# 
+   168     0214                     	;# 
+   169     0215                     	;# 
+   170     0215                     	;# 
+   171     0216                     	;# 
+   172     0216                     	;# 
+   173     0217                     	;# 
+   174     0217                     	;# 
+   175     0218                     	;# 
+   176     0218                     	;# 
+   177     0219                     	;# 
+   178     021A                     	;# 
+   179     021B                     	;# 
+   180     021B                     	;# 
+   181     021C                     	;# 
+   182     021C                     	;# 
+   183     021D                     	;# 
+   184     021D                     	;# 
+   185     021E                     	;# 
+   186     021F                     	;# 
+   187     028C                     	;# 
+   188     028C                     	;# 
+   189     028D                     	;# 
+   190     028D                     	;# 
+   191     028E                     	;# 
+   192     028F                     	;# 
+   193     0290                     	;# 
+   194     0290                     	;# 
+   195     0291                     	;# 
+   196     0292                     	;# 
+   197     0292                     	;# 
+   198     0293                     	;# 
+   199     0293                     	;# 
+   200     0294                     	;# 
+   201     0295                     	;# 
+   202     0296                     	;# 
+   203     0296                     	;# 
+   204     0297                     	;# 
+   205     0298                     	;# 
+   206     0298                     	;# 
+   207     0299                     	;# 
+   208     0299                     	;# 
+   209     029A                     	;# 
+   210     029B                     	;# 
+   211     029C                     	;# 
+   212     029C                     	;# 
+   213     029D                     	;# 
+   214     030C                     	;# 
+   215     030C                     	;# 
+   216     030D                     	;# 
+   217     030E                     	;# 
+   218     030F                     	;# 
+   219     0310                     	;# 
+   220     0310                     	;# 
+   221     0311                     	;# 
+   222     0312                     	;# 
+   223     0313                     	;# 
+   224     0314                     	;# 
+   225     0314                     	;# 
+   226     0315                     	;# 
+   227     0316                     	;# 
+   228     0317                     	;# 
+   229     0318                     	;# 
+   230     0318                     	;# 
+   231     0319                     	;# 
+   232     031A                     	;# 
+   233     031B                     	;# 
+   234     031C                     	;# 
+   235     031C                     	;# 
+   236     031D                     	;# 
+   237     031E                     	;# 
+   238     031F                     	;# 
+   239     038C                     	;# 
+   240     038C                     	;# 
+   241     038D                     	;# 
+   242     038E                     	;# 
+   243     0390                     	;# 
+   244     0390                     	;# 
+   245     0391                     	;# 
+   246     0392                     	;# 
+   247     040C                     	;# 
+   248     040D                     	;# 
+   249     040E                     	;# 
+   250     040F                     	;# 
+   251     0410                     	;# 
+   252     0411                     	;# 
+   253     0416                     	;# 
+   254     0416                     	;# 
+   255     0417                     	;# 
+   256     0418                     	;# 
+   257     0418                     	;# 
+   258     0419                     	;# 
+   259     041A                     	;# 
+   260     041A                     	;# 
+   261     041B                     	;# 
+   262     041C                     	;# 
+   263     041C                     	;# 
+   264     041D                     	;# 
+   265     041E                     	;# 
+   266     041F                     	;# 
+   267     048C                     	;# 
+   268     048C                     	;# 
+   269     048D                     	;# 
+   270     048E                     	;# 
+   271     048F                     	;# 
+   272     048F                     	;# 
+   273     0490                     	;# 
+   274     0491                     	;# 
+   275     0492                     	;# 
+   276     0492                     	;# 
+   277     0493                     	;# 
+   278     0494                     	;# 
+   279     0495                     	;# 
+   280     0495                     	;# 
+   281     0496                     	;# 
+   282     0497                     	;# 
+   283     0498                     	;# 
+   284     0499                     	;# 
+   285     049A                     	;# 
+   286     049B                     	;# 
+   287     049C                     	;# 
+   288     049D                     	;# 
+   289     050C                     	;# 
+   290     050C                     	;# 
+   291     050D                     	;# 
+   292     050E                     	;# 
+   293     050F                     	;# 
+   294     050F                     	;# 
+   295     0510                     	;# 
+   296     0511                     	;# 
+   297     0512                     	;# 
+   298     0512                     	;# 
+   299     0513                     	;# 
+   300     0514                     	;# 
+   301     0515                     	;# 
+   302     0515                     	;# 
+   303     0516                     	;# 
+   304     0517                     	;# 
+   305     0518                     	;# 
+   306     0519                     	;# 
+   307     051A                     	;# 
+   308     051B                     	;# 
+   309     051C                     	;# 
+   310     051D                     	;# 
+   311     058C                     	;# 
+   312     058C                     	;# 
+   313     058D                     	;# 
+   314     058E                     	;# 
+   315     058F                     	;# 
+   316     058F                     	;# 
+   317     0590                     	;# 
+   318     0591                     	;# 
+   319     0592                     	;# 
+   320     0593                     	;# 
+   321     060C                     	;# 
+   322     060D                     	;# 
+   323     060E                     	;# 
+   324     060F                     	;# 
+   325     0610                     	;# 
+   326     0611                     	;# 
+   327     0612                     	;# 
+   328     0613                     	;# 
+   329     0614                     	;# 
+   330     0616                     	;# 
+   331     0617                     	;# 
+   332     0618                     	;# 
+   333     0619                     	;# 
+   334     061A                     	;# 
+   335     061B                     	;# 
+   336     061C                     	;# 
+   337     061D                     	;# 
+   338     061E                     	;# 
+   339     068C                     	;# 
+   340     068D                     	;# 
+   341     068E                     	;# 
+   342     068F                     	;# 
+   343     0690                     	;# 
+   344     0691                     	;# 
+   345     0692                     	;# 
+   346     0693                     	;# 
+   347     0694                     	;# 
+   348     070C                     	;# 
+   349     070D                     	;# 
+   350     070E                     	;# 
+   351     070F                     	;# 
+   352     0710                     	;# 
+   353     0711                     	;# 
+   354     0712                     	;# 
+   355     0713                     	;# 
+   356     0714                     	;# 
+   357     0716                     	;# 
+   358     0717                     	;# 
+   359     0718                     	;# 
+   360     0719                     	;# 
+   361     071A                     	;# 
+   362     071B                     	;# 
+   363     071C                     	;# 
+   364     071D                     	;# 
+   365     071E                     	;# 
+   366     0796                     	;# 
+   367     0797                     	;# 
+   368     0798                     	;# 
+   369     0799                     	;# 
+   370     079A                     	;# 
+   371     079B                     	;# 
+   372     080C                     	;# 
+   373     080D                     	;# 
+   374     080E                     	;# 
+   375     080F                     	;# 
+   376     0810                     	;# 
+   377     0811                     	;# 
+   378     0812                     	;# 
+   379     0813                     	;# 
+   380     0814                     	;# 
+   381     081A                     	;# 
+   382     081B                     	;# 
+   383     081C                     	;# 
+   384     081D                     	;# 
+   385     081E                     	;# 
+   386     081F                     	;# 
+   387     088C                     	;# 
+   388     088D                     	;# 
+   389     088E                     	;# 
+   390     088F                     	;# 
+   391     0890                     	;# 
+   392     0891                     	;# 
+   393     0892                     	;# 
+   394     0893                     	;# 
+   395     0895                     	;# 
+   396     0896                     	;# 
+   397     0897                     	;# 
+   398     0898                     	;# 
+   399     0899                     	;# 
+   400     089A                     	;# 
+   401     089B                     	;# 
+   402     090C                     	;# 
+   403     090E                     	;# 
+   404     090F                     	;# 
+   405     091F                     	;# 
+   406     098F                     	;# 
+   407     098F                     	;# 
+   408     0990                     	;# 
+   409     0991                     	;# 
+   410     0992                     	;# 
+   411     0993                     	;# 
+   412     0994                     	;# 
+   413     0995                     	;# 
+   414     0996                     	;# 
+   415     0997                     	;# 
+   416     1E0F                     	;# 
+   417     1E10                     	;# 
+   418     1E11                     	;# 
+   419     1E12                     	;# 
+   420     1E13                     	;# 
+   421     1E14                     	;# 
+   422     1E15                     	;# 
+   423     1E16                     	;# 
+   424     1E17                     	;# 
+   425     1E18                     	;# 
+   426     1E19                     	;# 
+   427     1E1A                     	;# 
+   428     1E1B                     	;# 
+   429     1E1C                     	;# 
+   430     1E1D                     	;# 
+   431     1E1E                     	;# 
+   432     1E1F                     	;# 
+   433     1E20                     	;# 
+   434     1E21                     	;# 
+   435     1E22                     	;# 
+   436     1E23                     	;# 
+   437     1E24                     	;# 
+   438     1E25                     	;# 
+   439     1E26                     	;# 
+   440     1E27                     	;# 
+   441     1E28                     	;# 
+   442     1E29                     	;# 
+   443     1E2A                     	;# 
+   444     1E2B                     	;# 
+   445     1E2C                     	;# 
+   446     1E2D                     	;# 
+   447     1E2E                     	;# 
+   448     1E2F                     	;# 
+   449     1E30                     	;# 
+   450     1E31                     	;# 
+   451     1E32                     	;# 
+   452     1E33                     	;# 
+   453     1E34                     	;# 
+   454     1E35                     	;# 
+   455     1E36                     	;# 
+   456     1E37                     	;# 
+   457     1E8F                     	;# 
+   458     1E90                     	;# 
+   459     1E91                     	;# 
+   460     1E92                     	;# 
+   461     1E93                     	;# 
+   462     1E94                     	;# 
+   463     1E95                     	;# 
+   464     1E96                     	;# 
+   465     1E97                     	;# 
+   466     1E9C                     	;# 
+   467     1E9D                     	;# 
+   468     1E9E                     	;# 
+   469     1EA1                     	;# 
+   470     1EA2                     	;# 
+   471     1EA3                     	;# 
+   472     1EA4                     	;# 
+   473     1EA5                     	;# 
+   474     1EA9                     	;# 
+   475     1EAA                     	;# 
+   476     1EAB                     	;# 
+   477     1EAC                     	;# 
+   478     1EB1                     	;# 
+   479     1EB2                     	;# 
+   480     1EB3                     	;# 
+   481     1EB8                     	;# 
+   482     1EB9                     	;# 
+   483     1EBA                     	;# 
+   484     1EBB                     	;# 
+   485     1EBC                     	;# 
+   486     1EBD                     	;# 
+   487     1EBE                     	;# 
+   488     1EC3                     	;# 
+   489     1EC5                     	;# 
+   490     1EC6                     	;# 
+   491     1EC7                     	;# 
+   492     1EC8                     	;# 
+   493     1EC9                     	;# 
+   494     1ECA                     	;# 
+   495     1ECB                     	;# 
+   496     1ECC                     	;# 
+   497     1F10                     	;# 
+   498     1F11                     	;# 
+   499     1F12                     	;# 
+   500     1F13                     	;# 
+   501     1F14                     	;# 
+   502     1F15                     	;# 
+   503     1F16                     	;# 
+   504     1F17                     	;# 
+   505     1F18                     	;# 
+   506     1F19                     	;# 
+   507     1F1A                     	;# 
+   508     1F1B                     	;# 
+   509     1F1C                     	;# 
+   510     1F1D                     	;# 
+   511     1F1E                     	;# 
+   512     1F1F                     	;# 
+   513     1F20                     	;# 
+   514     1F21                     	;# 
+   515     1F22                     	;# 
+   516     1F23                     	;# 
+   517     1F24                     	;# 
+   518     1F25                     	;# 
+   519     1F26                     	;# 
+   520     1F27                     	;# 
+   521     1F28                     	;# 
+   522     1F29                     	;# 
+   523     1F2A                     	;# 
+   524     1F2B                     	;# 
+   525     1F2C                     	;# 
+   526     1F2D                     	;# 
+   527     1F2E                     	;# 
+   528     1F2F                     	;# 
+   529     1F30                     	;# 
+   530     1F31                     	;# 
+   531     1F32                     	;# 
+   532     1F38                     	;# 
+   533     1F39                     	;# 
+   534     1F3A                     	;# 
+   535     1F3B                     	;# 
+   536     1F3C                     	;# 
+   537     1F3D                     	;# 
+   538     1F3E                     	;# 
+   539     1F3F                     	;# 
+   540     1F40                     	;# 
+   541     1F41                     	;# 
+   542     1F43                     	;# 
+   543     1F44                     	;# 
+   544     1F45                     	;# 
+   545     1F46                     	;# 
+   546     1F47                     	;# 
+   547     1F48                     	;# 
+   548     1F49                     	;# 
+   549     1F4A                     	;# 
+   550     1F4B                     	;# 
+   551     1F4C                     	;# 
+   552     1F4E                     	;# 
+   553     1F4F                     	;# 
+   554     1F50                     	;# 
+   555     1F51                     	;# 
+   556     1F52                     	;# 
+   557     1F53                     	;# 
+   558     1F54                     	;# 
+   559     1F55                     	;# 
+   560     1F56                     	;# 
+   561     1F57                     	;# 
+   562     1F59                     	;# 
+   563     1F5A                     	;# 
+   564     1F5B                     	;# 
+   565     1F5C                     	;# 
+   566     1F5D                     	;# 
+   567     1F61                     	;# 
+   568     1F62                     	;# 
+   569     1F64                     	;# 
+   570     1F65                     	;# 
+   571     1F66                     	;# 
+   572     1F67                     	;# 
+   573     1F68                     	;# 
+   574     1F69                     	;# 
+   575     1F6A                     	;# 
+   576     1F6B                     	;# 
+   577     1F6C                     	;# 
+   578     1F6D                     	;# 
+   579     1FE4                     	;# 
+   580     1FE5                     	;# 
+   581     1FE6                     	;# 
+   582     1FE7                     	;# 
+   583     1FE8                     	;# 
+   584     1FE9                     	;# 
+   585     1FEA                     	;# 
+   586     1FEB                     	;# 
+   587     1FED                     	;# 
+   588     1FEE                     	;# 
+   589     1FEF                     	;# 
+   590                           
+   591                           	psect	cinit
+   592     07FD                     start_initialization:	
+   593                           ; #config settings
+   594                           
+   595     07FD                     __initialization:
+   596     07FD                     end_of_initialization:	
+   597                           ;End of C runtime variable initialization code
+   598                           
+   599     07FD                     __end_of__initialization:
+   600     07FD  0140               	movlb	0
+   601     07FE  3187  2FFB         	ljmp	_main	;jump to C main() function
+   602                           
+   603                           	psect	cstackCOMMON
+   604     0000                     __pcstackCOMMON:
+   605     0000                     ??_main:
+   606     0000                     ?_main:	
+   607                           ; 1 bytes @ 0x0
+   608                           
+   609                           
+   610                           	psect	maintext
+   611     07FB                     __pmaintext:	
+   612                           ; 2 bytes @ 0x0
+   613 ;;
+   614 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   615 ;;
+   616 ;; *************** function _main *****************
+   617 ;; Defined at:
+   618 ;;		line 2 in file "main.c"
+   619 ;; Parameters:    Size  Location     Type
+   620 ;;		None
+   621 ;; Auto vars:     Size  Location     Type
+   622 ;;		None
+   623 ;; Return value:  Size  Location     Type
+   624 ;;                  2    4[None  ] int 
+   625 ;; Registers used:
+   626 ;;		None
+   627 ;; Tracked objects:
+   628 ;;		On entry : B3F/0
+   629 ;;		On exit  : 0/0
+   630 ;;		Unchanged: 0/0
+   631 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK2
+      +6  BANK27  BANK28  BANK29  BANK30  BANK31  BANK32  BANK33  BANK34  BANK35  BANK36  BANK37  BANK38  BANK39  BANK40  BANK4
+      +1  BANK42  BANK43  BANK44  BANK45  BANK46  BANK47  BANK48  BANK49  BANK50
+   632 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0
+   633 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0
+   634 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0
+   635 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0       0       0       0       0       0
+   636 ;;Total ram usage:        0 bytes
+   637 ;; This function calls:
+   638 ;;		Nothing
+   639 ;; This function is called by:
+   640 ;;		Startup code after reset
+   641 ;; This function uses a non-reentrant model
+   642 ;;
+   643                           
+   644     07FB                     _main:	
+   645                           ;psect for function _main
+   646                           
+   647     07FB                     l615:	
+   648                           ;incstack = 0
+   649                           ; Regs used in _main: []
+   650                           
+   651     07FB                     l5:	
+   652                           ;main.c: 3:     return 1;;	Return value of _main is never used
+   653                           
+   654     07FB  3180  2802         	ljmp	start
+   655     07FD                     __end_of_main:
+   656     007E                     btemp	set	126	;btemp
+   657     007E                     wtemp0	set	126
+   658                           
+   659                           	psect	idloc
+   660                           
+   661                           ;Config register IDLOC0 @ 0x8000
+   662                           ;	unspecified, using default values
+   663     8000                     	org	32768
+   664     8000  3FFF               	dw	16383
+   665                           
+   666                           ;Config register IDLOC1 @ 0x8001
+   667                           ;	unspecified, using default values
+   668     8001                     	org	32769
+   669     8001  3FFF               	dw	16383
+   670                           
+   671                           ;Config register IDLOC2 @ 0x8002
+   672                           ;	unspecified, using default values
+   673     8002                     	org	32770
+   674     8002  3FFF               	dw	16383
+   675                           
+   676                           ;Config register IDLOC3 @ 0x8003
+   677                           ;	unspecified, using default values
+   678     8003                     	org	32771
+   679     8003  3FFF               	dw	16383
+   680                           
+   681                           	psect	config
+   682                           
+   683                           ;Config register CONFIG1 @ 0x8007
+   684                           ;	unspecified, using default values
+   685                           ;	External Oscillator mode selection bits
+   686                           ;	FEXTOSC = 0x7, unprogrammed default
+   687                           ;	Power-up default value for COSC bits
+   688                           ;	RSTOSC = 0x7, unprogrammed default
+   689                           ;	Clock Out Enable bit
+   690                           ;	CLKOUTEN = 0x1, unprogrammed default
+   691                           ;	Clock Switch Enable bit
+   692                           ;	CSWEN = 0x1, unprogrammed default
+   693                           ;	Fail-Safe Clock Monitor Enable bit
+   694                           ;	FCMEN = 0x1, unprogrammed default
+   695     8007                     	org	32775
+   696     8007  3FFF               	dw	16383
+   697                           
+   698                           ;Config register CONFIG2 @ 0x8008
+   699                           ;	unspecified, using default values
+   700                           ;	Master Clear Enable bit
+   701                           ;	MCLRE = 0x1, unprogrammed default
+   702                           ;	Power-up Timer Enable bit
+   703                           ;	PWRTE = 0x1, unprogrammed default
+   704                           ;	Low-Power BOR enable bit
+   705                           ;	LPBOREN = 0x1, unprogrammed default
+   706                           ;	Brown-out reset enable bits
+   707                           ;	BOREN = 0x3, unprogrammed default
+   708                           ;	Brown-out Reset Voltage Selection
+   709                           ;	BORV = 0x1, unprogrammed default
+   710                           ;	Zero-cross detect disable
+   711                           ;	ZCD = 0x1, unprogrammed default
+   712                           ;	Peripheral Pin Select one-way control
+   713                           ;	PPS1WAY = 0x1, unprogrammed default
+   714                           ;	Stack Overflow/Underflow Reset Enable bit
+   715                           ;	STVREN = 0x1, unprogrammed default
+   716                           ;	Background Debugger
+   717                           ;	DEBUG = 0x1, unprogrammed default
+   718     8008                     	org	32776
+   719     8008  3FFF               	dw	16383
+   720                           
+   721                           ;Config register CONFIG3 @ 0x8009
+   722                           ;	unspecified, using default values
+   723                           ;	WDT Period Select bits
+   724                           ;	WDTCPS = 0x1F, unprogrammed default
+   725                           ;	WDT operating mode
+   726                           ;	WDTE = 0x3, unprogrammed default
+   727                           ;	WDT Window Select bits
+   728                           ;	WDTCWS = 0x7, unprogrammed default
+   729                           ;	WDT input clock selector
+   730                           ;	WDTCCS = 0x7, unprogrammed default
+   731     8009                     	org	32777
+   732     8009  3FFF               	dw	16383
+   733                           
+   734                           ;Config register CONFIG4 @ 0x800A
+   735                           ;	unspecified, using default values
+   736                           ;	UserNVM self-write protection bits
+   737                           ;	WRT = 0x3, unprogrammed default
+   738                           ;	Scanner Enable bit
+   739                           ;	SCANE = 0x1, unprogrammed default
+   740                           ;	Low Voltage Programming Enable bit
+   741                           ;	LVP = 0x1, unprogrammed default
+   742     800A                     	org	32778
+   743     800A  3FFF               	dw	16383
+   744                           
+   745                           ;Config register CONFIG5 @ 0x800B
+   746                           ;	unspecified, using default values
+   747                           ;	UserNVM Program memory code protection bit
+   748                           ;	CP = 0x1, unprogrammed default
+   749                           ;	DataNVM code protection bit
+   750                           ;	CPD = 0x1, unprogrammed default
+   751     800B                     	org	32779
+   752     800B  3FFF               	dw	16383
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  32
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      0       0
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            80      0       0
+    BANK7            80      0       0
+    BANK8            80      0       0
+    BANK9            80      0       0
+    BANK10           80      0       0
+    BANK11           80      0       0
+    BANK12           80      0       0
+    BANK13           80      0       0
+    BANK14           80      0       0
+    BANK15           80      0       0
+    BANK16           80      0       0
+    BANK17           80      0       0
+    BANK18           80      0       0
+    BANK19           80      0       0
+    BANK20           80      0       0
+    BANK21           80      0       0
+    BANK22           80      0       0
+    BANK23           80      0       0
+    BANK24           80      0       0
+    BANK25           80      0       0
+    BANK26           80      0       0
+    BANK27           80      0       0
+    BANK28           80      0       0
+    BANK29           80      0       0
+    BANK30           80      0       0
+    BANK31           80      0       0
+    BANK32           80      0       0
+    BANK33           80      0       0
+    BANK34           80      0       0
+    BANK35           80      0       0
+    BANK36           80      0       0
+    BANK37           80      0       0
+    BANK38           80      0       0
+    BANK39           80      0       0
+    BANK40           80      0       0
+    BANK41           80      0       0
+    BANK42           80      0       0
+    BANK43           80      0       0
+    BANK44           80      0       0
+    BANK45           80      0       0
+    BANK46           80      0       0
+    BANK47           80      0       0
+    BANK48           80      0       0
+    BANK49           80      0       0
+    BANK50           80      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Critical Paths under _main in BANK16
+
+    None.
+
+Critical Paths under _main in BANK17
+
+    None.
+
+Critical Paths under _main in BANK18
+
+    None.
+
+Critical Paths under _main in BANK19
+
+    None.
+
+Critical Paths under _main in BANK20
+
+    None.
+
+Critical Paths under _main in BANK21
+
+    None.
+
+Critical Paths under _main in BANK22
+
+    None.
+
+Critical Paths under _main in BANK23
+
+    None.
+
+Critical Paths under _main in BANK24
+
+    None.
+
+Critical Paths under _main in BANK25
+
+    None.
+
+Critical Paths under _main in BANK26
+
+    None.
+
+Critical Paths under _main in BANK27
+
+    None.
+
+Critical Paths under _main in BANK28
+
+    None.
+
+Critical Paths under _main in BANK29
+
+    None.
+
+Critical Paths under _main in BANK30
+
+    None.
+
+Critical Paths under _main in BANK31
+
+    None.
+
+Critical Paths under _main in BANK32
+
+    None.
+
+Critical Paths under _main in BANK33
+
+    None.
+
+Critical Paths under _main in BANK34
+
+    None.
+
+Critical Paths under _main in BANK35
+
+    None.
+
+Critical Paths under _main in BANK36
+
+    None.
+
+Critical Paths under _main in BANK37
+
+    None.
+
+Critical Paths under _main in BANK38
+
+    None.
+
+Critical Paths under _main in BANK39
+
+    None.
+
+Critical Paths under _main in BANK40
+
+    None.
+
+Critical Paths under _main in BANK41
+
+    None.
+
+Critical Paths under _main in BANK42
+
+    None.
+
+Critical Paths under _main in BANK43
+
+    None.
+
+Critical Paths under _main in BANK44
+
+    None.
+
+Critical Paths under _main in BANK45
+
+    None.
+
+Critical Paths under _main in BANK46
+
+    None.
+
+Critical Paths under _main in BANK47
+
+    None.
+
+Critical Paths under _main in BANK48
+
+    None.
+
+Critical Paths under _main in BANK49
+
+    None.
+
+Critical Paths under _main in BANK50
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             FF0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BITBANK2            50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BANK2               50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BITBANK3            50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BANK3               50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITBANK4            50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BANK4               50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITBANK5            50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BANK5               50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITBANK6            50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BANK6               50      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITBANK7            50      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BANK7               50      0       0      19        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITBANK8            50      0       0      20        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BANK8               50      0       0      21        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITBANK9            50      0       0      22        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BANK9               50      0       0      23        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITBANK10           50      0       0      24        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BANK10              50      0       0      25        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITBANK11           50      0       0      26        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BANK11              50      0       0      27        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+ABS                  0      0       0      28        0.0%
+BITBANK12           50      0       0      29        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BANK12              50      0       0      30        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITBANK13           50      0       0      31        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BANK13              50      0       0      32        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+BITBANK14           50      0       0      33        0.0%
+BITSFR32             0      0       0      33        0.0%
+SFR32                0      0       0      33        0.0%
+BANK14              50      0       0      34        0.0%
+BITSFR33             0      0       0      34        0.0%
+SFR33                0      0       0      34        0.0%
+BITBANK15           50      0       0      35        0.0%
+BITSFR34             0      0       0      35        0.0%
+SFR34                0      0       0      35        0.0%
+BANK15              50      0       0      36        0.0%
+BITSFR35             0      0       0      36        0.0%
+SFR35                0      0       0      36        0.0%
+BITBANK16           50      0       0      37        0.0%
+BITSFR36             0      0       0      37        0.0%
+SFR36                0      0       0      37        0.0%
+BANK16              50      0       0      38        0.0%
+BITSFR37             0      0       0      38        0.0%
+SFR37                0      0       0      38        0.0%
+BITBANK17           50      0       0      39        0.0%
+BITSFR38             0      0       0      39        0.0%
+SFR38                0      0       0      39        0.0%
+BANK17              50      0       0      40        0.0%
+BITSFR39             0      0       0      40        0.0%
+SFR39                0      0       0      40        0.0%
+BITBANK18           50      0       0      41        0.0%
+BITSFR40             0      0       0      41        0.0%
+SFR40                0      0       0      41        0.0%
+BANK18              50      0       0      42        0.0%
+BITSFR41             0      0       0      42        0.0%
+SFR41                0      0       0      42        0.0%
+BITBANK19           50      0       0      43        0.0%
+BITSFR42             0      0       0      43        0.0%
+SFR42                0      0       0      43        0.0%
+BANK19              50      0       0      44        0.0%
+BITSFR43             0      0       0      44        0.0%
+SFR43                0      0       0      44        0.0%
+BITBANK20           50      0       0      45        0.0%
+BITSFR44             0      0       0      45        0.0%
+SFR44                0      0       0      45        0.0%
+BANK20              50      0       0      46        0.0%
+BITSFR45             0      0       0      46        0.0%
+SFR45                0      0       0      46        0.0%
+BITBANK21           50      0       0      47        0.0%
+BITSFR46             0      0       0      47        0.0%
+SFR46                0      0       0      47        0.0%
+BANK21              50      0       0      48        0.0%
+BITSFR47             0      0       0      48        0.0%
+SFR47                0      0       0      48        0.0%
+BITBANK22           50      0       0      49        0.0%
+BITSFR48             0      0       0      49        0.0%
+SFR48                0      0       0      49        0.0%
+BANK22              50      0       0      50        0.0%
+BITSFR49             0      0       0      50        0.0%
+SFR49                0      0       0      50        0.0%
+BITBANK23           50      0       0      51        0.0%
+BITSFR50             0      0       0      51        0.0%
+SFR50                0      0       0      51        0.0%
+BANK23              50      0       0      52        0.0%
+BITSFR51             0      0       0      52        0.0%
+SFR51                0      0       0      52        0.0%
+BITBANK24           50      0       0      53        0.0%
+BITSFR52             0      0       0      53        0.0%
+SFR52                0      0       0      53        0.0%
+BANK24              50      0       0      54        0.0%
+BITSFR53             0      0       0      54        0.0%
+SFR53                0      0       0      54        0.0%
+BITBANK25           50      0       0      55        0.0%
+BITSFR54             0      0       0      55        0.0%
+SFR54                0      0       0      55        0.0%
+BANK25              50      0       0      56        0.0%
+BITSFR55             0      0       0      56        0.0%
+SFR55                0      0       0      56        0.0%
+BITBANK26           50      0       0      57        0.0%
+BITSFR56             0      0       0      57        0.0%
+SFR56                0      0       0      57        0.0%
+BANK26              50      0       0      58        0.0%
+BITSFR57             0      0       0      58        0.0%
+SFR57                0      0       0      58        0.0%
+BITSFR58             0      0       0      59        0.0%
+SFR58                0      0       0      59        0.0%
+DATA                 0      0       0      59        0.0%
+BITBANK27           50      0       0      60        0.0%
+BITSFR59             0      0       0      60        0.0%
+SFR59                0      0       0      60        0.0%
+BANK27              50      0       0      61        0.0%
+BITSFR60             0      0       0      61        0.0%
+SFR60                0      0       0      61        0.0%
+BITBANK28           50      0       0      62        0.0%
+BITSFR61             0      0       0      62        0.0%
+SFR61                0      0       0      62        0.0%
+BANK28              50      0       0      63        0.0%
+BITSFR62             0      0       0      63        0.0%
+SFR62                0      0       0      63        0.0%
+BITBANK29           50      0       0      64        0.0%
+BITSFR63             0      0       0      64        0.0%
+SFR63                0      0       0      64        0.0%
+BANK29              50      0       0      65        0.0%
+BITBANK30           50      0       0      66        0.0%
+BANK30              50      0       0      67        0.0%
+BITBANK31           50      0       0      68        0.0%
+BANK31              50      0       0      69        0.0%
+BITBANK32           50      0       0      70        0.0%
+BANK32              50      0       0      71        0.0%
+BITBANK33           50      0       0      72        0.0%
+BANK33              50      0       0      73        0.0%
+BITBANK34           50      0       0      74        0.0%
+BANK34              50      0       0      75        0.0%
+BITBANK35           50      0       0      76        0.0%
+BANK35              50      0       0      77        0.0%
+BITBANK36           50      0       0      78        0.0%
+BANK36              50      0       0      79        0.0%
+BITBANK37           50      0       0      80        0.0%
+BANK37              50      0       0      81        0.0%
+BITBANK38           50      0       0      82        0.0%
+BANK38              50      0       0      83        0.0%
+BITBANK39           50      0       0      84        0.0%
+BANK39              50      0       0      85        0.0%
+BITBANK40           50      0       0      86        0.0%
+BANK40              50      0       0      87        0.0%
+BITBANK41           50      0       0      88        0.0%
+BANK41              50      0       0      89        0.0%
+BITBANK42           50      0       0      90        0.0%
+BANK42              50      0       0      91        0.0%
+BITBANK43           50      0       0      92        0.0%
+BANK43              50      0       0      93        0.0%
+BITBANK44           50      0       0      94        0.0%
+BANK44              50      0       0      95        0.0%
+BITBANK45           50      0       0      96        0.0%
+BANK45              50      0       0      97        0.0%
+BITBANK46           50      0       0      98        0.0%
+BANK46              50      0       0      99        0.0%
+BITBANK47           50      0       0     100        0.0%
+BANK47              50      0       0     101        0.0%
+BITBANK48           50      0       0     102        0.0%
+BANK48              50      0       0     103        0.0%
+BITBANK49           50      0       0     104        0.0%
+BANK49              50      0       0     105        0.0%
+BITBANK50           50      0       0     106        0.0%
+BANK50              50      0       0     107        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Wed Aug 09 09:47:27 2023
+
+                      l5 07FB                      l615 07FB                     _main 07FB  
+                   btemp 007E                     start 0002                    ?_main 0000  
+                  wtemp0 007E          __initialization 07FD             __end_of_main 07FD  
+                 ??_main 0000  __end_of__initialization 07FD           __pcstackCOMMON 0000  
+             __pmaintext 07FB     end_of_initialization 07FD      start_initialization 07FD  
+              ___latbits 0004  
